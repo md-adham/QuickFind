@@ -203,7 +203,7 @@ function binarySearch(arr, target) {
 
     while (low <= high) {
         const mid = Math.floor((low + high) / 2);
-        steps.push({ index: mid, status: 'checking');
+        steps.push({ index: mid, status: 'checking'});
 
         if (arr[mid] === target) {
             foundIndex = mid;
