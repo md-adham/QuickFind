@@ -1,0 +1,194 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top to prevent jumping on content load */
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.container {
+    max-width: 1000px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.array-display {
+    display: flex;
+    flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
+    gap: 8px;
+    margin-top: 15px;
+    justify-content: center; /* Center the array elements */
+}
+.array-element {
+    width: 45px; /* Fixed width for consistent squares */
+    height: 45px; /* Fixed height for consistent squares */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e2e8f0; /* bg-slate-200 */
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.5s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0; /* Prevent shrinking on smaller screens */
+}
+.array-element.highlight-current {
+    background-color: #93c5fd; /* bg-blue-300 */
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.array-element.highlight-found {
+    background-color: #86efac; /* bg-green-300 */
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center; /* Center the label and input-with-button horizontally */
+}
+.input-group label {
+    font-weight: 600;
+    color: #4a5568; /* text-gray-700 */
+}
+.input-with-button {
+    display: flex;
+    gap: 10px; /* Space between input and button */
+    align-items: flex-end; /* Align button to bottom of input */
+}
+.input-group input {
+    border: 1px solid #cbd5e0; /* border-gray-300 */
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 250px; /* Fixed width for consistent input size */
+}
+.input-group input:focus {
+    border-color: #6366f1; /* focus:border-indigo-500 */
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); /* focus:ring-indigo-200 */
+    outline: none;
+}
+.button-style { /* Common style for buttons */
+    background-color: #6366f1; /* bg-indigo-500 */
+    color: white;
+    font-weight: 700;
+    padding: 10px 20px; /* Slightly smaller padding for inline buttons */
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+    white-space: nowrap; /* Prevent button text from wrapping */
+    width: 100px; /* Fixed width for consistent button size */
+}
+.button-style:hover {
+    background-color: #4f46e5; /* hover:bg-indigo-600 */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
+}
+.button-style:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(99, 102, 241, 0.2);
+}
+.result-section {
+    background-color: #f7fafc; /* bg-gray-50 */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.result-section h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #2d3748; /* text-gray-800 */
+    margin-bottom: 15px;
+    text-align: center;
+}
+.result-info {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #4a5568; /* text-gray-700 */
+    text-align: center;
+}
+.message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 25px 35px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    border: 1px solid #ddd;
+    display: none; /* Hidden by default */
+}
+.message-box button {
+    margin-top: 20px;
+    background-color: #6366f1;
+    color: white;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.message-box button:hover {
+    background-color: #4f46e5;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none; /* Hidden by default */
+}
+/* Chart specific styles */
+.chart-container {
+    grid-column: 1 / -1; /* Span across both columns in the grid */
+    background-color: #f7fafc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+.chart-container h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 15px;
+}
+.bar {
+    fill: #6366f1; /* Indigo color for bars */
+    transition: fill 0.3s ease;
+}
+.bar-label {
+    font-size: 14px;
+    fill: #333;
+    font-weight: 600;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease; /* Smooth fade-in */
+}
+.bar-label.visible {
+    opacity: 1; /* Visible when bar animation is complete */
+}
+.axis-label {
+    font-size: 14px;
+    fill: #555;
+}
