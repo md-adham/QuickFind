@@ -203,7 +203,7 @@ function binarySearch(arr, target) {
 
     while (low <= high) {
         const mid = Math.floor((low + high) / 2);
-        steps.push({ index: mid, status: 'checking' });
+        steps.push({ index: mid, status: 'checking');
 
         if (arr[mid] === target) {
             foundIndex = mid;
@@ -290,7 +290,7 @@ async function startLinearSearchAnimation(arr, steps) {
 
 /**
  * Animates the binary search process.
- * @param {number[]} arr - The sorted array being searched.
+ * @param {number[]} arr - The array being searched.
  * @param {number[]} steps - The recorded steps of the search.
  */
 async function startBinarySearchAnimation(arr, steps) {
